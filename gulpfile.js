@@ -15,14 +15,14 @@ require('laravel-elixir-vue-2');
 
 elixir(mix => {
     mix.sass('app.scss')
-    .less('style.less')
+    .less(['style.less', '../../../node_modules/animate.css/animate.css'], 'public/css/style.css')
     .sass('login.scss', 'public/css/login.css')
     .webpack('app.js')
     .scripts([
         '../../../node_modules/jquery/dist/jquery.js',
         '../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
         '../../../node_modules/angular/angular.js',
-        'olnatura.js',
+        'menuclic.js',
         'ngservice/**.js',
         'ngcontroller/**.js',
     ])

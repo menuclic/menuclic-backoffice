@@ -9,4 +9,8 @@ class LoginController extends Controller {
         return view('login.login');
     }
 
+    public function logout(Request $request) {
+        $request->session()->forget('user');
+        return response()->redirectTo('/login');
+    }
 }

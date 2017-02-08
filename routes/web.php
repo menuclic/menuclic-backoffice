@@ -11,6 +11,5 @@
 |
 */
 Route::get('/login', 'LoginController@login');
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+Route::get('/logout', 'LoginController@logout')->middleware('auth');
+Route::get('/', 'IndexController@index')->middleware('auth');
