@@ -17,7 +17,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-app="olnatura">
+<body ng-app="menuclic">
     @yield('content')
     <script src="{{ elixir('js/all.js') }}" type="application/javascript"></script>
 </body>

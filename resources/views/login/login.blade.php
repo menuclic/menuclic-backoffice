@@ -2,14 +2,24 @@
 
 @section('content')
     <section id="wrapper" class="login-register" ng-controller="LoginController">
-        <div class="login-box login-sidebar">
-            <div class="white-box">
+        <div class="login-box login-sidebar animated fadeInRight">
+            <div class="white-box ">
                 <form class="form-horizontal form-material" id="loginform" ng-submit="login()" name="loginForm">
                     <a href="javascript:void(0)" class="text-center db"><img src="/images/logo.png" style="height: 150px" alt="Home" /></a>
 
+                    @if(session('error'))
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="form-group m-t-40">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" ng-required="true" ng-model="user.user" placeholder="Correo electrónico" />
+                            <input class="form-control" type="email" ng-required="true" ng-model="user.user" placeholder="Correo electrónico" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -28,9 +38,21 @@
                             <a href="javascript:void(0)" id="to-recover" class="text-dark"><i class="fa fa-lock m-r-5"></i> Olvidé mi contraseña</a>
                         </div>
                     </div>
+
+                    <div class="form-group" ng-show="errorMessage">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger">
+                                [[ errorMessage ]]
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
-                            <button class="btn btn-default btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" ng-disabled="loginForm.$invalid">Iniciar Sesión</button>
+                            <button class="btn btn-default btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" ng-disabled="loginForm.$invalid || busy">
+                                <span class="fa fa-spin fa-spinner" ng-show="busy"></span>
+                                Iniciar Sesión
+                            </button>
                         </div>
                     </div>
                 </form>
